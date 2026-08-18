@@ -1,0 +1,373 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%spacing
+\usepackage{setspace}
+\setlength{\parskip}{2pt} % Decreases space between paragraphs to 2 points
+
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0,0}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{experience}[4]
+    {
+    \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & #3 \\
+    \textit{#2} & \textit{#4} \\[-1pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut,leftmargin=1em,itemsep=3pt,label=\textopenbullet]
+    }
+    {
+    \end{itemize}
+    \end{minipage}
+    }
+
+\raggedbottom
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\raggedbottom
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+
+\Huge{Milana Jade Berhe} \\[4.5pt]
+
+\raisebox{-0.05\height}\faMapMarker\ Berkeley, CA
+\ $|$ \
+\href{https://linkedin.com/in/milana-berhe}
+{\raisebox{-0.05\height}\faLinkedin\ milana-berhe}
+\ $|$ \
+\href{mailto:milana.berhe@berkeley.edu}
+{\raisebox{-0.05\height}\faEnvelope\ milana.berhe@berkeley.edu}
+
+\end{tabularx}
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+
+\begin{jobshort}{University of California, Berkeley}{\textit{Class of 2028}}
+\textit {B.A. in Astrophysics, B.A. in Political Science, Minor in Creative Writing \hfill GPA: 3.6/4.0}
+
+\begin{itemize}[nosep, leftmargin=1em, itemsep=3pt, label=\textopenbullet]
+    \item \textit{Relevant Coursework:} Python for Astronomers, Calculus, Linear Algebra, Abstract Linear Algebra, Differential Equations, Classical Mechanics, Waves, Thermodynamics, Electricity and Magnetism, Optics, Relativity, Quantum Mechanics, International Relations, Comparative Government
+\end{itemize}
+
+\end{jobshort}
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+% RESEARCH EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Research Experience}
+
+\begin{experience}
+{Student Researcher}
+{Professor Wenbin Lu's High Energy Theoretical Astrophysics Group}
+{Berkeley, CA}
+{June 2026 -- Present}
+
+\item My goal is to create a functional and re-applicable model of gaseous, flared magnetar disks with Python to discover if accretion disks are indeed the cause of inconsistencies in observed spectral energy distributions
+
+\item Working under the guidance of graduate students Eliza Diggins and Savannah Cary and Professor Wenbin Lu
+
+\end{experience}
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+% TEACHING
+%----------------------------------------------------------------------------------------
+\section{Teaching and Mentorship}
+
+\begin{experience}
+{Python for Astronomers DeCal Student Facilitator}
+{UC Berkeley Department of Astronomy}
+{Berkeley, CA}
+{July 2025 -- Present}
+
+\item Presents material in lecture to class of roughly 70 students per semester
+
+\item Leads discussion and problem solving sessions in class
+
+\item Co-hosts weekly office hours to further problem-solve and deepen Python skills and knowledge
+
+\end{experience}
+
+\begin{experience}
+{Summer Undergraduate Mentor}
+{Mathematical \& Physical Science Scholars}
+{Remote}
+{June 2026 -- August 2026}
+
+\item Guiding 2 cohorts of 10 new students in 1-on-1 and group meetings, workshops, and community building events
+
+\end{experience}
+
+
+% professional EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Professional Experience}
+
+\begin{experience}
+{Managing Editor}
+{UC Berkeley Student Affairs Communications}
+{Berkeley, CA}
+{September 2024 -- Present}
+
+\item Lead writer and interviewer for 20+ \href{https://life.berkeley.edu/author/milana/}{blog posts} on the UC Berkeley Life Blog to convey the student experience at UC Berkeley
+
+\item Proofreads updates to the university website and school-wide communications in financial aid, events, housing, and undergraduate and graduate student information
+
+\end{experience}
+
+% VOLUNTEER AND EXTRACURRICULAR EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Volunteer and Extracurricular Experience}
+
+\begin{experience}
+{Community Development Officer}
+{Undergraduate Astronomy Society}
+{Berkeley, CA}
+{June 2026 -- Present}
+
+\item Manages Cluster Mentorship Program consisting of 4 clusters, 15 mentors, and 100+ participants
+
+\end{experience}
+
+
+\begin{experience}
+{Marketing and Website Development Officer}
+{Undergraduate Astronomy Society}
+{Berkeley, CA}
+{August 2025 -- May 2026}
+
+\item Developed and maintain the club website to organize events, resources, and photo archives
+
+\item Write and distribute a biweekly newsletter to 600+ subscribers, communicating club events and professional development opportunities
+
+\item Created and continuously updated the club website \href{https://uasberkeley.github.io}{(uasberkeley.github.io)}
+
+\end{experience}
+
+
+\begin{experience}
+{Telescope Crew Member}
+{Undergraduate Astronomy Society}
+{Berkeley, CA}
+{January 2025 -- July 2025}
+
+\item Trained in the operation of Schmidt-Cassegrain, Newtonian, and Dobsonian telescopes
+
+\item Trained in the operation of UC Berkeley Astronomy's Richard Treffers 17'' PlaneWave telescope
+
+\end{experience}
+
+\begin{experience}
+{Volunteer}
+{Discovery Cube Museum}
+{Orange County, CA}
+{June 2025 -- Present}
+
+\item Expert in aerospace, rocketry, atmospheric science, planetary science, and physics
+
+\item Organized rotating constellation observation activity to 50+ visitors
+
+\item Sea life expert; 30+ hours behind tanks with sea stars, sharks, rays, sea snails, and anemones
+
+\item Expert in archaeology and dinosaur remains
+
+\end{experience}
+
+
+\begin{experience}
+{Contributing Editor}
+{Berkeley Poetry Review}
+{Berkeley, CA}
+{September 2024 -- April 2026}
+
+\item Reads 40+ poems per week and contributes to discussions at weekly club meetings
+
+\end{experience}
+
+
+\begin{experience}
+{Lifestyle Writer}
+{The Daily Californian}
+{Berkeley, CA}
+{September 2025 -- February 2026}
+
+\item Write 6+ how-tos, local guides, and quizzes for thousands of online readers per semester
+
+\end{experience}
+
+
+\begin{experience}
+{Designer and Writer}
+{NewSpace@Berkeley}
+{Berkeley, CA}
+{September 2024 -- January 2025}
+
+\item Space consulting and policy club
+
+\item Wrote biweekly newsletters to send to club alumni, current members, and other subscribers
+
+\item Designed club merchandise and graphics
+
+\item Participated in the emergence of the space policy sector of the club
+
+\end{experience}
+
+%	Awards and Publications
+%----------------------------------------------------------------------------------------
+\section{Awards, Presentations, and Publications}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+2026 & \normalsize{Majors and Minors Advice Panel, Undergraduate Astronomy Society}\\
+2026 &  \normalsize{Finalist, Brooke Owens Fellowship}\\
+2024, 2025, 2026 &  \normalsize{UC Berkeley Life Blog}\\
+2025  &  \normalsize{The Daily Californian}\\
+2024 & \normalsize{Honorable Mention, National Scholastic Art and Writing Awards}\\  
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Coding & \normalsize{Python, Matplotlib, Pandas, SciPy, NumPy, LaTeX, HTML }\\
+Digital Design  &  \normalsize{Google Suite, WordPress, Wix, Canva, Procreate}\\
+Languages &  \normalsize{English (native, fluent), Russian (native, fluent), Spanish (proficient), Japanese (limited)}\\  
+Art & \normalsize{Printmaking, crochet, knitting, sketching, video editing (CapCut), photography, sewing, embroidery, guitar (electric and acoustic)}
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
